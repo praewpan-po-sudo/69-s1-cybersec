@@ -3,8 +3,8 @@
 ## My Information
 - Praewpan Poompiw
 - Student ID 0568604050XX-X
-## ความคาดหวังจากการเรียนวิชา Cyber Security
-- ต้องการเรียนรู้การใช้ทักษะต่าง ๆ ในการทำงานที่เกี่ยวกับพวกความปลอดภัยทางไซเบอร์
-- เรียนรู้สิ่งต่างๆ ที่จะป้องกันอันตรายจากโลกไซเบอร์ได้หากเกิดปัญหาไม่มากก็น้อย
-- ใช้ PowerShell, Git, Docker ในการเรียน การทำงานในอนาคตได้อย่างถูกต้อง แล้วก็คล่องแคล่ว
-- อยากที่จะเข้าใจหลักการทำงาน การแก้ไข ปรับเปลี่ยน ปกป้องข้อมูล แล้วก็เข้าใจเกี่ยวกับความปลอดภัยทางไซเบอร์มากขึ้น
+## Expectations from Studying Cyber Security
+- I want to develop practical cybersecurity skills that I can apply in both my studies and future career.
+- I aim to learn how to protect myself from cyber threats, even at a basic level.
+- I want to become proficient in using PowerShell, Git, and Docker for my studies and future work.
+- I want to understand how data works, how to modify, manage, and protect it, and to build a strong foundation in cybersecurity.
