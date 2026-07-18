@@ -10,3 +10,13 @@ services:
       - POSTGRES_DB=praewpan
     volumes:
       - ./data:/var/lib/postgresql/data
+  admin:
+    image: dpage/pgadmin4
+    container_name: 69-s1-admin
+    depends_on:
+      - db
+    ports:
+      - "8081:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: praewpan@email.com
+      PGADMIN_DEFAULT_PASSWORD: praew47560209
