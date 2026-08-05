@@ -1,7 +1,10 @@
+version: '3.8'
+
 services:
   db:
     image: postgres:16-alpine
     container_name: 69-s1-db
+    restart: always
     ports:
       - "54327:5432"
     environment:
@@ -9,15 +12,20 @@ services:
       - POSTGRES_USER=praewpan
       - POSTGRES_DB=praewpan
     volumes:
-      - ./data:/var/lib/postgresql/data
-      
+      - data-postgres:/var/lib/postgresql/data
+
   admin:
     image: dpage/pgadmin4
     container_name: 69-s1-admin
-    depends_on:
-      - db
+    restart: always
     ports:
       - "8081:80"
     environment:
-      PGADMIN_DEFAULT_EMAIL: praewpan@email.com
-      PGADMIN_DEFAULT_PASSWORD: praew47560209
+      - PGADMIN_DEFAULT_EMAIL=praewpan@email.com
+      - PGADMIN_DEFAULT_PASSWORD=praew47560209
+    volumes:
+      - data-pgadmin:/var/lib/pgadmin
+
+volumes:
+  data-postgres:
+  data-pgadmin:
