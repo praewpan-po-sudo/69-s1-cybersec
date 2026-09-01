@@ -1,43 +1,39 @@
-##api
+###api
 
 
-##Signup
+###Signup
 GET http://localhost:9092/admin/auth/register-admin
 content-type: application/json
 
 {
-  "firstName": "",
-  "lastName": "",
-  "email": "",
-  "password": "",
-  "confirmPassword": ""
-}
-###                                     
+  "firstName": "Praewpan",
+  "lastName": "poompiw",
+  "email": "praewpan@email.com",
+  "password": "praew47560209",
+  "confirmPassword": "praew47560209"
+}                                    
 
-##login
+###login
 POST http://localhost:9092/admin/login
 content-type: application/json
 
 {
-  "email": "",
-  "password": "",
-  "rememberMe": ""
+  "email": "praewpan-po@rmutp.ac.th",
+  "password": "praewpan475605062547P",
+  "rememberMe": "false"
 }
-###
 
-##profile
+###profile
 GET http://localhost:9092/admin/me
-Authorization: 
-###
+Authorization: Bearer {{login.response.body.$.data.token}}
 
-##forgot
-GET http://localhost:9092/admin/auth/forgot-password
+###forgot
+POST http://localhost:9092/admin/forgot-password
 content-type: application/json
 
 {
-  "email": ""
+  "email": "praewpan@email.com"
 }
-###
 
 # ==========================================
 # USER
@@ -48,33 +44,28 @@ POST http://localhost:9092/api/auth/local/register
 content-type: application/json
 
 {
-  "username": "",
-  "email": "",
-  "password": ""
+  "username": "testuser",
+  "email": "testuser@email.com",
+  "password": "testpassword123"
 }
-###
 
 ###user-login
 POST http://localhost:9092/api/auth/local
 content-type: application/json
 
 {
-  "identifier": "",
-  "password": ""
+  "identifier": "testuser@email.com",
+  "password": "testpassword123"
 }
-###
 
 ###user-profile
 GET http://localhost:9092/api/users/me
-# Old token may expire; if 401, run user-login and paste fresh jwt value here
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzg4MjUyODIyLCJleHAiOjE3OTA4NDQ4MjJ9.9BhYBjHpi-3zdWjCZMfK8Qlw2HM1u1L2QHQBC2_Zops
-###
 
 ###user-forgot
 POST http://localhost:9092/api/auth/forgot-password
 content-type: application/json
 
 {
-  "email": ""
+  "email": "testuser@email.com"
 }
-###
