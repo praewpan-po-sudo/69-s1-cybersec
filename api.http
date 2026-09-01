@@ -67,5 +67,5 @@ POST http://localhost:9092/api/auth/forgot-password
 content-type: application/json
 
 {
-  "email": "testuser@email.com"
+  "email": "minningminfayieie@gmail.com"
 }
