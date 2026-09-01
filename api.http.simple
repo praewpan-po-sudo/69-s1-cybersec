@@ -1,0 +1,80 @@
+##api
+
+
+##Signup
+GET http://localhost:9092/admin/auth/register-admin
+content-type: application/json
+
+{
+  "firstName": "",
+  "lastName": "",
+  "email": "",
+  "password": "",
+  "confirmPassword": ""
+}
+###                                     
+
+##login
+POST http://localhost:9092/admin/login
+content-type: application/json
+
+{
+  "email": "",
+  "password": "",
+  "rememberMe": ""
+}
+###
+
+##profile
+GET http://localhost:9092/admin/me
+Authorization: 
+###
+
+##forgot
+GET http://localhost:9092/admin/auth/forgot-password
+content-type: application/json
+
+{
+  "email": ""
+}
+###
+
+# ==========================================
+# USER
+# ==========================================
+
+###user-register
+POST http://localhost:9092/api/auth/local/register
+content-type: application/json
+
+{
+  "username": "",
+  "email": "",
+  "password": ""
+}
+###
+
+###user-login
+POST http://localhost:9092/api/auth/local
+content-type: application/json
+
+{
+  "identifier": "",
+  "password": ""
+}
+###
+
+###user-profile
+GET http://localhost:9092/api/users/me
+# Old token may expire; if 401, run user-login and paste fresh jwt value here
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzg4MjUyODIyLCJleHAiOjE3OTA4NDQ4MjJ9.9BhYBjHpi-3zdWjCZMfK8Qlw2HM1u1L2QHQBC2_Zops
+###
+
+###user-forgot
+POST http://localhost:9092/api/auth/forgot-password
+content-type: application/json
+
+{
+  "email": ""
+}
+###
