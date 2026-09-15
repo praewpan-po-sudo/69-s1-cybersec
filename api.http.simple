@@ -39,6 +39,16 @@ content-type: application/json
 }
 ###
 
+##admin-reset-password
+POST http://localhost:9092/admin/reset-password
+content-type: application/json
+
+{
+  "resetPasswordToken": "",
+  "password": ""
+}
+###
+
 # ==========================================
 # USER
 # ==========================================
@@ -76,5 +86,16 @@ content-type: application/json
 
 {
   "email": ""
+}
+###
+
+###user-reset-password
+POST http://localhost:9092/api/auth/reset-password
+content-type: application/json
+
+{
+  "code": "",
+  "password": "",
+  "passwordConfirmation": ""
 }
 ###
