@@ -31,6 +31,8 @@ services:
     container_name: 69-s2-app
     ports:
       - "${APP_PORT}:1337"
+    volumes:
+      - ./strapi-app/src/extensions/users-permissions/strapi-server.js:/opt/app/src/extensions/users-permissions/strapi-server.js
     environment:
       - DATABASE_CLIENT=postgres
       - DATABASE_HOST=db
