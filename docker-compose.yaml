@@ -33,6 +33,7 @@ services:
       - "${APP_PORT}:1337"
     volumes:
       - ./strapi-app/src/extensions/users-permissions/strapi-server.js:/opt/app/src/extensions/users-permissions/strapi-server.js
+      - ./strapi-app/config/admin.js:/opt/app/config/admin.js
     environment:
       - DATABASE_CLIENT=postgres
       - DATABASE_HOST=db
