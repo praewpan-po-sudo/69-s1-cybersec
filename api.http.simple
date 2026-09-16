@@ -1,0 +1,99 @@
+##api
+
+##1.Admin
+
+###1.1 Admin Signup
+GET http://localhost:9092/admin/auth/register-admin
+content-type: application/json
+
+{
+  "firstName": "",
+  "lastName": "",
+  "email": "",
+  "password": "",
+  "confirmPassword": ""
+}
+###
+
+###1.2 Admin Login
+POST http://localhost:9092/admin/login
+content-type: application/json
+
+{
+  "email": "",
+  "password": "",
+  "rememberMe": ""
+}
+###
+
+###1.3 Admin Profile
+GET http://localhost:9092/admin/me
+Authorization: Bearer <paste-admin-token>
+###
+
+###1.4 Forgot Password
+GET http://localhost:9092/admin/auth/forgot-password
+content-type: application/json
+
+{
+  "email": ""
+}
+###
+
+###1.4.1 Admin Reset Password
+POST http://localhost:9092/admin/reset-password
+content-type: application/json
+
+{
+  "resetPasswordToken": "",
+  "password": ""
+}
+###
+
+##2.User
+
+###2.1 User Register
+POST http://localhost:9092/api/auth/local/register
+content-type: application/json
+
+{
+  "username": "",
+  "email": "",
+  "password": ""
+}
+###
+
+###2.2 User Login
+POST http://localhost:9092/api/auth/local
+content-type: application/json
+
+{
+  "identifier": "",
+  "password": ""
+}
+###
+
+###2.3 User Profile
+GET http://localhost:9092/api/users/me
+Authorization: Bearer <paste-user-token>
+###
+
+###2.4 User Forgot Password
+POST http://localhost:9092/api/auth/forgot-password
+content-type: application/json
+
+{
+  "email": ""
+}
+###
+
+###2.4.1 User Reset Password
+POST http://localhost:9092/api/auth/reset-password
+content-type: application/json
+
+{
+  "code": "",
+  "password": "",
+  "passwordConfirmation": ""
+}
+###
