@@ -1,0 +1,100 @@
+##api
+
+##1.Admin
+
+###1.1 Admin Login
+POST http://localhost:9092/admin/login
+content-type: application/json
+
+{
+  "email": "{{$dotenv ADMIN_EMAIL}}",
+  "password": "{{$dotenv ADMIN_PASSWORD}}",
+  "rememberMe": "{{$dotenv ADMIN_REMEMBER_ME}}"
+}
+###
+
+###1.2 Admin Signup
+GET http://localhost:9092/admin/auth/register-admin
+content-type: application/json
+
+{
+  "firstName": "{{$dotenv ADMIN_FIRST_NAME}}",
+  "lastName": "{{$dotenv ADMIN_LAST_NAME}}",
+  "email": "{{$dotenv ADMIN_SIGNUP_EMAIL}}",
+  "password": "{{$dotenv ADMIN_SIGNUP_PASSWORD}}",
+  "confirmPassword": "{{$dotenv ADMIN_SIGNUP_PASSWORD}}"
+}
+###
+
+###1.3 Forgot Password
+POST http://localhost:9092/admin/forgot-password
+content-type: application/json
+
+{
+  "email": "{{$dotenv ADMIN_EMAIL}}"
+}
+###
+
+###1.3.1 Admin Reset Password
+POST http://localhost:9092/admin/reset-password
+content-type: application/json
+
+{
+  "resetPasswordToken": "",
+  "password": "{{$dotenv ADMIN_RESET_PASSWORD}}"
+}
+###
+
+###1.4 Admin Profile
+GET http://localhost:9092/admin/me
+Authorization: Bearer <paste-admin-token>
+###
+
+##2.User
+
+###2.1 User Login
+POST http://localhost:9092/api/auth/local
+content-type: application/json
+
+{
+  "identifier": "{{$dotenv USER_EMAIL}}",
+  "password": "{{$dotenv USER_PASSWORD}}"
+}
+###
+
+###2.2 User Register
+POST http://localhost:9092/api/auth/local/register
+content-type: application/json
+
+{
+  "username": "{{$dotenv USER_USERNAME}}",
+  "email": "{{$dotenv USER_EMAIL}}",
+  "password": "{{$dotenv USER_SIGNUP_PASSWORD}}",
+  "confirmPassword": "{{$dotenv USER_SIGNUP_PASSWORD}}"
+}
+###
+
+###2.3 User Forgot Password
+POST http://localhost:9092/api/auth/forgot-password
+content-type: application/json
+
+{
+  "email": "{{$dotenv USER_FORGOT_EMAIL}}"
+}
+###
+
+###2.3.1 User Reset Password
+POST http://localhost:9092/api/auth/reset-password
+content-type: application/json
+
+{
+  "resetPasswordToken": "",
+  "password": "{{$dotenv USER_RESET_PASSWORD}}",
+  "passwordConfirmation": "{{$dotenv USER_RESET_PASSWORD}}"
+}
+###
+
+###2.4 User Profile
+GET http://localhost:9092/api/users/me
+Authorization: Bearer {{$dotenv USER_BEARER_TOKEN}}
+###

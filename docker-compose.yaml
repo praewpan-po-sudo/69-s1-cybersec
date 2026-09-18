@@ -1,0 +1,51 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: 69-s2-db
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_DB=${DB_NAME}
+      - PGDATA=/var/lib/postgresql/data
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  admin:
+    image: dpage/pgadmin4
+    container_name: 69-s2-admin
+    ports:
+      - "127.0.0.1:${PGADMIN_PORT}:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PG_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PG_PASS}
+    volumes:
+      - ./pgadmin:/var/lib/pgadmin
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  app:
+    image: prawee/strapi@sha256:266579f5fe73542aecd88dc5e5dd27cc6b7c56057d8a71a572ab627fa37828ad
+    container_name: 69-s2-app
+    ports:
+      - "${APP_PORT}:1337"
+    volumes:
+      - ./strapi-app/src/extensions/users-permissions/strapi-server.js:/opt/app/src/extensions/users-permissions/strapi-server.js
+      - ./strapi-app/config/admin.js:/opt/app/config/admin.js
+    environment:
+      - DATABASE_CLIENT=postgres
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - DATABASE_NAME=${DB_NAME}
+      - DATABASE_USERNAME=${APP_DB_USER}
+      - DATABASE_PASSWORD=${APP_DB_PASS}
+      - DATABASE_SSL=false
+      - JWT_SECRET=${APP_JWT_SECRET}
+      - ADMIN_JWT_SECRET=${APP_ADMIN_JWT_SECRET}
+      - APP_KEYS=${APP_KEYS}
+      - API_TOKEN_SALT=${APP_API_TOKEN_SALT}
+      - TRANSFER_TOKEN_SALT=${APP_TRANSFER_TOKEN_SALT}
+    depends_on:
+      - db
+    restart: unless-stopped

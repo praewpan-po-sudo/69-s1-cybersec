@@ -1,0 +1,5 @@
+data/
+.data/
+.env
+pgadmin/
+api.http
