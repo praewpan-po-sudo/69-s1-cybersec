@@ -40,7 +40,7 @@ POST http://localhost:9092/admin/reset-password
 content-type: application/json
 
 {
-  "resetPasswordToken": "",
+  "resetPasswordToken": "{{$dotenv ADMIN_RESET_PASSWORD_TOKEN}}",
   "password": "{{$dotenv ADMIN_RESET_PASSWORD}}"
 }
 ###
@@ -88,7 +88,7 @@ POST http://localhost:9092/api/auth/reset-password
 content-type: application/json
 
 {
-  "resetPasswordToken": "",
+  "resetPasswordToken": "{{$dotenv USER_RESET_PASSWORD_TOKEN}}",
   "password": "{{$dotenv USER_RESET_PASSWORD}}",
   "passwordConfirmation": "{{$dotenv USER_RESET_PASSWORD}}"
 }
@@ -96,5 +96,134 @@ content-type: application/json
 
 ###2.4 Profile
 GET http://localhost:9092/api/users/me
+Authorization: Bearer {{$dotenv USER_BEARER_TOKEN}}
+###
+
+##3.Content
+
+###3.1 Student
+
+###3.1.1 Create
+POST http://localhost:9092/api/students
+content-type: application/json
+Authorization: Bearer {{$dotenv USER_BEARER_TOKEN}}
+
+{
+  "data": {
+    "name": "{{$dotenv STUDENT_CREATE_NAME}}",
+    "mobile": "{{$dotenv STUDENT_CREATE_MOBILE}}",
+    "cardId": "{{$dotenv STUDENT_CREATE_CARD_ID}}"
+  }
+}
+###
+
+###3.1.2 List All
+GET http://localhost:9092/api/students
+Authorization: Bearer {{$dotenv USER_BEARER_TOKEN}}
+###
+
+###3.1.3 List with ID
+GET http://localhost:9092/api/students/<student-id>
+Authorization: Bearer {{$dotenv USER_BEARER_TOKEN}}
+###
+
+###3.1.4 Update
+PUT http://localhost:9092/api/students/<student-id>
+content-type: application/json
+Authorization: Bearer {{$dotenv USER_BEARER_TOKEN}}
+
+{
+  "data": {
+    "name": "{{$dotenv STUDENT_UPDATE_NAME}}",
+    "mobile": "{{$dotenv STUDENT_UPDATE_MOBILE}}",
+    "cardId": "{{$dotenv STUDENT_UPDATE_CARD_ID}}"
+  }
+}
+###
+
+###3.1.5 Delete
+DELETE http://localhost:9092/api/students/<student-id>
+Authorization: Bearer {{$dotenv USER_BEARER_TOKEN}}
+###
+
+###3.2 Subject
+
+###3.2.1 Create
+POST http://localhost:9092/api/subjects
+content-type: application/json
+Authorization: Bearer {{$dotenv USER_BEARER_TOKEN}}
+
+{
+  "data": {
+    "name": "{{$dotenv SUBJECT_CREATE_NAME}}"
+  }
+}
+###
+
+###3.2.2 List All
+GET http://localhost:9092/api/subjects
+Authorization: Bearer {{$dotenv USER_BEARER_TOKEN}}
+###
+
+###3.2.3 List with ID
+GET http://localhost:9092/api/subjects/<subject-id>
+Authorization: Bearer {{$dotenv USER_BEARER_TOKEN}}
+###
+
+###3.2.4 Update
+PUT http://localhost:9092/api/subjects/<subject-id>
+content-type: application/json
+Authorization: Bearer {{$dotenv USER_BEARER_TOKEN}}
+
+{
+  "data": {
+    "name": "{{$dotenv SUBJECT_UPDATE_NAME}}"
+  }
+}
+###
+
+###3.2.5 Delete
+DELETE http://localhost:9092/api/subjects/<subject-id>
+Authorization: Bearer {{$dotenv USER_BEARER_TOKEN}}
+###
+
+###3.3 Teacher
+
+###3.3.1 Create
+POST http://localhost:9092/api/teachers
+content-type: application/json
+Authorization: Bearer {{$dotenv USER_BEARER_TOKEN}}
+
+{
+  "data": {
+    "name": "{{$dotenv TEACHER_CREATE_NAME}}"
+  }
+}
+###
+
+###3.3.2 List All
+GET http://localhost:9092/api/teachers
+Authorization: Bearer {{$dotenv USER_BEARER_TOKEN}}
+###
+
+###3.3.3 List with ID
+GET http://localhost:9092/api/teachers/<teacher-id>
+Authorization: Bearer {{$dotenv USER_BEARER_TOKEN}}
+###
+
+###3.3.4 Update
+PUT http://localhost:9092/api/teachers/<teacher-id>
+content-type: application/json
+Authorization: Bearer {{$dotenv USER_BEARER_TOKEN}}
+
+{
+  "data": {
+    "name": "{{$dotenv TEACHER_UPDATE_NAME}}"
+  }
+}
+###
+
+###3.3.5 Delete
+DELETE http://localhost:9092/api/teachers/<teacher-id>
 Authorization: Bearer {{$dotenv USER_BEARER_TOKEN}}
 ###
